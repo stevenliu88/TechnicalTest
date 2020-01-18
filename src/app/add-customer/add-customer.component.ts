@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl , FormGroup, FormBuilder, Validators} from '@angular/forms';
-import {MatButtonModule} from '@angular/material/button';
+import { CustomerService } from '../shared/service/customer.service';
 
 @Component({
   selector: 'app-add-customer',
@@ -8,9 +8,10 @@ import {MatButtonModule} from '@angular/material/button';
   styleUrls: ['./add-customer.component.css']
 })
 export class AddCustomerComponent implements OnInit {
-
+  public isDisabledSubmitBtn: boolean;
   customerForm: FormGroup;
-  constructor(fb: FormBuilder) { 
+  
+  constructor(public customerService: CustomerService, private fb: FormBuilder) { 
     this.customerForm = fb.group({
       firstName: fb.control('',Validators.required),
       lastName: fb.control('',Validators.required),
@@ -23,7 +24,10 @@ export class AddCustomerComponent implements OnInit {
   }
 
   ngOnInit() {
-    
+    this.isDisabledSubmitBtn = false;
   }
 
+  Submit(){
+    this.customerService.addCustomer(this.customerForm.value);
+  }
 }

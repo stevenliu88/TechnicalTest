@@ -21,4 +21,4 @@
         </select>
       </mat-form-field>
   </form>
-  <button class="submitBtn" mat-raised-button color="primary">Submit</button>
+  <button (click)="Submit()" class="submitBtn" [disabled]="isDisabledSubmitBtn" mat-raised-button color="primary">Submit</button>
