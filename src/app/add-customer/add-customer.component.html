@@ -11,13 +11,13 @@
       <input matInput placeholder="Email" formControlName="email">
     </mat-form-field>
 
-    <mat-form-field class="add-customer-field">
+    <mat-form-field class="add-customer-field" >
         <mat-label>Gender</mat-label>
-        <select formControlName="gender">
+        <select matNativeControl formControlName="gender">
           <option value="Male">Male</option>
           <option value="Female">Female</option>
           <option value="Not Sure">Not Sure</option>
         </select>
       </mat-form-field>
-      <button mat-button color="primary">Add Customer</button>
   </form>
+  <button mat-raised-button color="primary">Add Customer</button>
