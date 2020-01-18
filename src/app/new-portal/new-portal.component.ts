@@ -7,7 +7,8 @@ import { CustomerService } from '../shared/service/customer.service';
 })
 export class NewPortalComponent implements OnInit {
 
-  constructor(private customerService: CustomerService) { }
+  constructor(
+    private customerService: CustomerService) { }
 
   ngOnInit() {
     console.log(this.customerService.getMockData());
