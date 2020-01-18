@@ -1,8 +1,12 @@
 .add-customer{
-    width: 100%;
+    width: 90%;
+    margin: 20px auto;
 }
 .add-customer-field{
     width: 100%;
-    margin-left: auto;
-    margin-right: auto;
+}
+
+.submitBtn {
+    float: right;
+    margin-right: 5%;
 }
