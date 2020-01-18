@@ -12,7 +12,7 @@ export class DataTableComponent implements AfterViewInit {
   @ViewChild(MatSort) sort: MatSort;
   dataSource: DataTableDataSource;
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['id', 'name'];
+  displayedColumns = ['id', 'name', 'email'];
 
   constructor(private customerService: CustomerService)
   {}
