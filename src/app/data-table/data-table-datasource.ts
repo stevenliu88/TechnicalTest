@@ -6,7 +6,8 @@ import { CustomerService } from '../shared/service/customer.service';
 
 // TODO: Replace this with your own data model type
 export interface DataTableItem {
-  name: string;
+  firstName: string;
+  lastName: string;
   id: number;
   email: string;
   gender: string;
@@ -74,7 +75,8 @@ export class DataTableDataSource extends DataSource<DataTableItem> {
     return data.sort((a, b) => {
       const isAsc = this.sort.direction === 'asc';
       switch (this.sort.active) {
-        case 'name': return compare(a.name, b.name, isAsc);
+        case 'firstName': return compare(a.firstName, b.firstName, isAsc);
+        case 'lastName': return compare(a.lastName, b.lastName, isAsc);
         case 'id': return compare(+a.id, +b.id, isAsc);
         case 'email': return compare(a.email,b.email, isAsc);
         case 'gender': return compare(a.gender,b.gender, isAsc);
