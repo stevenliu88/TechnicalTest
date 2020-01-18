@@ -7,12 +7,14 @@ import { NewPortalComponent } from './new-portal/new-portal.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DataTableComponent } from './data-table/data-table.component';
 import { MatTableModule, MatPaginatorModule, MatSortModule } from '@angular/material';
+import { AddCustomerComponent } from './add-customer/add-customer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NewPortalComponent,
-    DataTableComponent
+    DataTableComponent,
+    AddCustomerComponent
   ],
   imports: [
     BrowserModule,
