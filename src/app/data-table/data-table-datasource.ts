@@ -9,6 +9,7 @@ export interface DataTableItem {
   name: string;
   id: number;
   email: string;
+  gender: string;
 }
 
 // const EXAMPLE_DATA: DataTableItem[] = this.customerService.getMockData().default[0];
@@ -21,11 +22,7 @@ export class DataTableDataSource extends DataSource<DataTableItem> {
   data: DataTableItem[];
   constructor(private paginator: MatPaginator, private sort: MatSort, private customerService: CustomerService) {
     super();
-    this.data = Array.from(this.customerService.getMockData()).map(x => ({
-      id: x.id,
-      name: `${x.first_name} ${x.last_name}`,
-      email: `${x.email}`
-    }));
+    this.data = this.customerService.getMockData();
   }
 
   /**
@@ -80,6 +77,7 @@ export class DataTableDataSource extends DataSource<DataTableItem> {
         case 'name': return compare(a.name, b.name, isAsc);
         case 'id': return compare(+a.id, +b.id, isAsc);
         case 'email': return compare(a.email,b.email, isAsc);
+        case 'gender': return compare(a.gender,b.gender, isAsc);
         default: return 0;
       }
     });
