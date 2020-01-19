@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { CustomerService } from '@shared/service/customer.service';
 
 @Component({
@@ -19,12 +19,28 @@ export class AddCustomerComponent implements OnInit {
         Validators.required,
         Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
       ])),
-      gender: fb.control('')
+      gender: fb.control('Male')
     });
   }
 
   ngOnInit() {
     this.isDisabledSubmitBtn = false;
+  }
+
+  get firstName(): AbstractControl{
+    return this.customerForm.get('firstName');
+  }
+
+  get lastName(): AbstractControl{
+    return this.customerForm.get('lastName');
+  }
+
+  get email(): AbstractControl{
+    return this.customerForm.get('email');
+  }
+  
+  get formGroupValidation() {
+    return this.customerForm.status === 'INVALID';
   }
 
   Submit() {

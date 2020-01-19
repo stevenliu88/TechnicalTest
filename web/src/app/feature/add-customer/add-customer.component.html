@@ -2,14 +2,23 @@
     <h1>Add Customer</h1>
     <mat-form-field class="add-customer-field">
       <input matInput placeholder="First Name"  formControlName="firstName">
+      <mat-error *ngIf = "firstName.hasError('required')">
+        {{'Please enter first name'}}
+      </mat-error>
     </mat-form-field>
 
     <mat-form-field class="add-customer-field">
       <input matInput placeholder="Last Name" formControlName="lastName">
+      <mat-error *ngIf = "firstName.hasError('required')">
+        {{'Please enter last name'}}
+      </mat-error>
     </mat-form-field>
 
     <mat-form-field class="add-customer-field">
       <input matInput placeholder="Email" formControlName="email">
+      <mat-error *ngIf = "firstName.hasError('required')">
+        {{'Please enter valid email'}}
+      </mat-error>
     </mat-form-field>
 
     <mat-form-field class="add-customer-field" >
@@ -21,4 +30,4 @@
         </select>
       </mat-form-field>
   </form>
-  <button (click)="Submit()" class="submit-button" [disabled]="isDisabledSubmitBtn" mat-raised-button color="primary">Submit</button>
+  <button (click)="Submit()" class="submit-button" [disabled]="formGroupValidation" mat-raised-button color="primary">Submit</button>
