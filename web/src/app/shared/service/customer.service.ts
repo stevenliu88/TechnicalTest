@@ -32,7 +32,7 @@ export class CustomerService {
         return this.data;
     }
 
-    public addCustomer(customer: Customer) {
+    public mappingCustomer(customer: Customer) {
         this.newCustomer = {
             id: this.lastId + 1,
             firstName: customer.firstName,
@@ -41,7 +41,11 @@ export class CustomerService {
             email: customer.email,
             status: true
         };
-        this.data.push(this.newCustomer);
+        return this.newCustomer;
+    }
+
+    public addCustomer(customer: Customer): Observable<Customer> {
+        return this.http.post<Customer>('/api/customer',customer);
     }
 
 

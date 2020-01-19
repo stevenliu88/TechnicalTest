@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { CustomerService } from '@shared/service/customer.service';
-
+import { Router } from '@angular/router'; 
+import { Customer } from '@shared/models/customer';
 @Component({
   selector: 'app-add-customer',
   templateUrl: './add-customer.component.html',
@@ -9,9 +10,10 @@ import { CustomerService } from '@shared/service/customer.service';
 })
 export class AddCustomerComponent implements OnInit {
   public isDisabledSubmitBtn: boolean;
-  customerForm: FormGroup;
+  public customerForm: FormGroup;
+  public customer: Customer;
 
-  constructor(public customerService: CustomerService, private fb: FormBuilder) {
+  constructor(public customerService: CustomerService, private fb: FormBuilder, public router: Router) {
     this.customerForm = fb.group({
       firstName: fb.control('', Validators.required),
       lastName: fb.control('', Validators.required),
@@ -44,6 +46,8 @@ export class AddCustomerComponent implements OnInit {
   }
 
   Submit() {
-    this.customerService.addCustomer(this.customerForm.value);
+    this.customer = this.customerService.mappingCustomer(this.customerForm.value);
+    this.customerService.addCustomer(this.customer).subscribe();
+    this.router.navigate(['new-portal']);
   }
 }
